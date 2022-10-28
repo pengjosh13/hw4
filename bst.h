@@ -199,6 +199,7 @@ public:
     virtual void remove(const Key& key); //TODO
     void clear(); //TODO
     bool isBalanced() const; //TODO
+    int calculateHeightIfBalanced(Node<Key, Value>* rood) const;
     void print() const;
     bool empty() const;
 
@@ -504,9 +505,31 @@ Node<Key, Value>* BinarySearchTree<Key, Value>::internalFind(const Key& key) con
 /**
  * Return true iff the BST is balanced.
  */
+
+
+template<typename Key, typename Value>
+int BinarySearchTree<Key, Value>::calculateHeightIfBalanced(Node<Key, Value>* rood) const{
+	if (root_ == nullptr){
+        return 0;
+    }
+
+	int leftHeight = calculateHeightIfBalanced(rood->left_);
+	int rightHeight = calculateHeightIfBalanced(rood->right_);
+	if (leftHeight == -1 || rightHeight == -1){
+		return -1;
+	}
+	if (std::abs(leftHeight - rightHeight) > 1){
+		return -1;
+	}
+	return (std::max(leftHeight, rightHeight) + 1);
+
+}
+
 template<typename Key, typename Value>
 bool BinarySearchTree<Key, Value>::isBalanced() const
 {
+
+    return (calculateHeightIfBalanced(root_) != -1);
     // TODO
 }
 
