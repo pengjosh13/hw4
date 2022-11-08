@@ -446,7 +446,6 @@ template<class Key, class Value>
 void BinarySearchTree<Key, Value>::insert(const std::pair<const Key, Value> &keyValuePair)
 {
 
-    
     // TODO
 }
 
