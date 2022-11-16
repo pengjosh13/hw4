@@ -29,8 +29,6 @@ bool equalPaths(Node *root)
 	int leafLvl = 0;
 	return checkPaths(root, lvl, &leafLvl);
 
-	
-    // Add your code below
 
 }
 
